@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.shymex.expcalc.controller.MainPaneController">
+   <children>
+      <TextField fx:id="priceField" layoutX="410.0" layoutY="111.0" prefHeight="42.0" prefWidth="82.0" AnchorPane.leftAnchor="420.0" />
+      <TextField fx:id="nameField" layoutX="538.0" layoutY="111.0" prefHeight="42.0" prefWidth="214.0" AnchorPane.leftAnchor="538.0" AnchorPane.rightAnchor="20.0" />
+      <MenuBar layoutY="1.0" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ChoiceBox fx:id="choosePersonBox" layoutX="24.0" layoutY="111.0" prefHeight="42.0" prefWidth="170.0" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="20.0" layoutY="87.0" text="Person">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="220.0" layoutY="87.0" text="Data">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="418.0" layoutY="87.0" text="Price">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="538.0" layoutY="87.0" text="Product name">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="wCheckbox" layoutX="20.0" layoutY="196.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" text="Wiktoria" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="20.0" layoutY="170.0" text="Users">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="sCheckbox" layoutX="141.0" layoutY="196.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" text="Szymon" AnchorPane.leftAnchor="120.0" />
+      <CheckBox fx:id="mCheckbox" layoutX="275.0" layoutY="196.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" text="Marcel" AnchorPane.leftAnchor="220.0" />
+      <ListView fx:id="productList" layoutX="20.0" layoutY="282.0" prefHeight="287.0" prefWidth="455.0" />
+      <Label layoutX="20.0" layoutY="246.0" text="Saved">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="productDetails" editable="false" layoutX="499.0" layoutY="282.0" prefHeight="287.0" prefWidth="281.0" AnchorPane.leftAnchor="499.0" AnchorPane.rightAnchor="20.0" />
+      <Label layoutX="20.0" layoutY="30.0" text="Expenses Calculator" AnchorPane.leftAnchor="20.0">
+         <font>
+            <Font name="Impact" size="45.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="datePicker" layoutX="220.0" layoutY="111.0" prefHeight="42.0" prefWidth="170.0" />
+      <Separator layoutX="13.0" layoutY="229.0" prefHeight="18.0" prefWidth="764.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="addButton" layoutX="697.0" layoutY="174.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="82.0" text="Add" textOverrun="CENTER_WORD_ELLIPSIS" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="499.0" layoutY="246.0" text="Details">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="removeButton" layoutX="418.0" layoutY="246.0" mnemonicParsing="false" text="Remove" />
+   </children>
+</AnchorPane>
