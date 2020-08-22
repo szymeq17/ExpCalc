@@ -63,6 +63,10 @@ public class Person {
         debtors.put(person, 0.0);
     }
 
+    public void removeProduct(Product product) {
+        products.remove(product);
+    }
+
     @Override
     public String toString() {
         return this.name;
