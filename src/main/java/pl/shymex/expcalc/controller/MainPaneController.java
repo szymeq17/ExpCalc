@@ -57,7 +57,6 @@ public class MainPaneController {
 
         Person S = new Person("Szymon", "S");
         Person W = new Person("Wiktoria", "W");
-        Person M = new Person("Marcel", "M");
 
         choosePersonBox.getItems().addAll(W, S, M);
 
