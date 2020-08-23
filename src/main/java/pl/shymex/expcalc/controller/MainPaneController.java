@@ -57,6 +57,7 @@ public class MainPaneController {
 
         Person S = new Person("Szymon", "S");
         Person W = new Person("Wiktoria", "W");
+        Person M = new Person("Marcel", "M");
 
         choosePersonBox.getItems().addAll(W, S, M);
 
@@ -84,6 +85,14 @@ public class MainPaneController {
                     + "\n" + "Bought by: " + toShow.getBuyer()
                     + "\n" + "Date: " + toShow.getDate()
                     + "\n" + "Consumers: " + toShow.getConsumer());
+        });
+
+        removeButton.setOnAction(actionEvent -> {
+            Product toRemove = productList.getSelectionModel().getSelectedItem();
+            productList.getItems().remove(toRemove);
+            W.removeProduct(toRemove);
+            S.removeProduct(toRemove);
+            M.removeProduct(toRemove);
         });
 
     }
