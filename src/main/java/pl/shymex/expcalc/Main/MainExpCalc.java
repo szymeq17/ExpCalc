@@ -19,5 +19,6 @@ public class MainExpCalc extends Application {
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
         stage.show();
+        System.out.println("1");
     }
 }
