@@ -75,8 +75,8 @@ public class MainPaneController {
             Product product = new Product(nameField.getText(), datePicker.getValue(),
                     Float.parseFloat(priceField.getText().replace(',', '.')),
                     choosePersonBox.getValue().getName(), consumers);
-            datePicker.setValue(null);
-            choosePersonBox.setValue(null);
+            nameField.setText("");
+            priceField.setText("");
 
             productList.getItems().add(product);
         });
