@@ -19,48 +19,29 @@ public class Person {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public ArrayList<Product> getProducts() {
         return products;
-    }
-
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
-    }
-
-    public double getMoneySpent() {
-        return moneySpent;
-    }
-
-    public void setMoneySpent(double moneySpent) {
-        this.moneySpent = moneySpent;
     }
 
     public String getInitial() {
         return initial;
     }
 
-    public void setInitial(String initial) {
-        this.initial = initial;
-    }
-
     public void addProduct(Product product) {
         products.add(product);
         moneySpent += product.getPrice();
-        System.out.println(debtors);
         for (Person person : debtors.keySet()) {
             if (product.getConsumer().contains(person.getInitial()) && !this.equals(person)) {
                 debtors.put(person, debtors.get(person) + product.getPrice()/product.getConsumer().length());
-                System.out.println(debtors);
             }
         }
     }
 
     public void setDebtors(Person person) {
         debtors.put(person, 0.0);
+    }
+    public void editDebtor(Person person, Double price) {
+        debtors.replace(person, price);
     }
 
     public Map<Person, Double> getDebtors() {
@@ -69,6 +50,13 @@ public class Person {
 
     public void removeProduct(Product product) {
         products.remove(product);
+    }
+
+    public boolean isConsumer(Product product) {
+        if (product.getConsumer().contains(this.initial)) {
+            return true;
+        }
+        return false;
     }
 
     @Override

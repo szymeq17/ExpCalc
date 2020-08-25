@@ -79,7 +79,7 @@ public class MainPaneController {
             }
             Product product = new Product(nameField.getText(), datePicker.getValue(),
                     Float.parseFloat(priceField.getText().replace(',', '.')),
-                    choosePersonBox.getValue().getName(), consumers);
+                    choosePersonBox.getValue(), consumers);
             choosePersonBox.getValue().addProduct(product);
             nameField.setText("");
             priceField.setText("");
@@ -87,20 +87,23 @@ public class MainPaneController {
             productList.getItems().add(product);
         });
         productList.addEventFilter(MouseEvent.MOUSE_CLICKED, actionEvent -> {
-            Product toShow = productList.getSelectionModel().getSelectedItem();
-            productDetails.setText("Name: " + toShow.getName() + "\n" + "Price: "
-                    + Math.round(toShow.getPrice() * 100.0)/100.0 + "PLN"
-                    + "\n" + "Bought by: " + toShow.getBuyer()
-                    + "\n" + "Date: " + toShow.getDate()
-                    + "\n" + "Consumers: " + toShow.getConsumer());
+            if (!productList.getItems().isEmpty()) {
+                Product toShow = productList.getSelectionModel().getSelectedItem();
+                productDetails.setText("Name: " + toShow.getName() + "\n" + "Price: "
+                        + Math.round(toShow.getPrice() * 100.0) / 100.0 + "PLN"
+                        + "\n" + "Bought by: " + toShow.getBuyer().getName()
+                        + "\n" + "Date: " + toShow.getDate()
+                        + "\n" + "Consumers: " + toShow.getConsumer());
+            }
         });
 
         removeButton.setOnAction(actionEvent -> {
             Product toRemove = productList.getSelectionModel().getSelectedItem();
             productList.getItems().remove(toRemove);
-            W.removeProduct(toRemove);
-            S.removeProduct(toRemove);
-            M.removeProduct(toRemove);
+            toRemove.getBuyer().removeProduct(toRemove);
+            calc.removeProductFromDebtors(toRemove.getBuyer(), toRemove);
+
+
         });
 
         calculateButton.setOnAction(actionEvent -> {
@@ -109,26 +112,25 @@ public class MainPaneController {
             String summary = "";
             for (Person person : W.getDebtors().keySet()) {
                 if (W.getDebtors().get(person) > 0) {
-                    summary += person.getName() + " owes " + W.getName() + " " + W.getDebtors().get(person) + "PLN\n";
+                    summary += person.getName() + " owes " + W.getName() + " "
+                            + Math.round(W.getDebtors().get(person) * 100.0) / 100.0 + "PLN\n";
                 }
             }
             for (Person person : S.getDebtors().keySet()) {
                 if (S.getDebtors().get(person) > 0) {
-                    summary += person.getName() + " owes " + S.getName() + " " + S.getDebtors().get(person) + "PLN\n";
+                    summary += person.getName() + " owes " + S.getName() + " "
+                            + Math.round(S.getDebtors().get(person) * 100.0) / 100.0 + "PLN\n";
                 }
             }
             for (Person person : M.getDebtors().keySet()) {
                 if (M.getDebtors().get(person) > 0) {
-                    summary += person.getName() + " owes " + M.getName() + " " + M.getDebtors().get(person) + "PLN\n";
+                    summary += person.getName() + " owes " + M.getName() + " "
+                            + Math.round(M.getDebtors().get(person) * 100.0) / 100.0 + "PLN\n";
                 }
             }
 
 
             productDetails.setText(summary);
-            System.out.println(M.getDebtors());
-            System.out.println(W.getDebtors());
-            System.out.println(S.getDebtors());
-            System.out.println("aaa");
         });
 
     }

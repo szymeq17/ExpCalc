@@ -6,10 +6,10 @@ public class Product {
     private String name;
     private LocalDate date;
     private double price;
-    private String buyer;
+    private Person buyer;
     private String consumer;
 
-    public Product(String name, LocalDate date, double price, String buyer, String consumer) {
+    public Product(String name, LocalDate date, double price, Person buyer, String consumer) {
         this.name = name;
         this.date = date;
         this.price = price;
@@ -18,12 +18,11 @@ public class Product {
     }
 
 
-
-    public String getBuyer() {
+    public Person getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(String buyer) {
+    public void setBuyer(Person buyer) {
         this.buyer = buyer;
     }
 

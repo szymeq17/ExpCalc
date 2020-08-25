@@ -1,5 +1,9 @@
 package pl.shymex.expcalc.logic;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class Calculation {
     private Person persons[] = new Person[3];
 
@@ -37,6 +41,20 @@ public class Calculation {
                 }
 
             }
+        }
+    }
+    public void removeProductFromDebtors(Person person, Product product) {
+        Map<Person, Double> mapCopy = new HashMap<>();
+        mapCopy.putAll(person.getDebtors());
+        for (Person another : mapCopy.keySet()) {
+            if (another.isConsumer(product)) {
+                double value = person.getDebtors().get(another);
+                person.editDebtor(another, value
+                        - product.getPrice()/product.getConsumer().length());
+
+                System.out.println(person.getDebtors());
+            }
+
         }
     }
 }
