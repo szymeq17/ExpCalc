@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import pl.shymex.expcalc.logic.Calculation;
 import pl.shymex.expcalc.logic.Person;
 import pl.shymex.expcalc.logic.Product;
 
@@ -51,6 +52,9 @@ public class MainPaneController {
 
     @FXML
     private Button removeButton;
+
+    @FXML
+    private Button calculateButton;
 
 
     public void initialize() {
@@ -95,6 +99,30 @@ public class MainPaneController {
             W.removeProduct(toRemove);
             S.removeProduct(toRemove);
             M.removeProduct(toRemove);
+        });
+
+        calculateButton.setOnAction(actionEvent -> {
+            Calculation calc = new Calculation(W, S, M);
+            calc.assignDebtors();
+            calc.optimizeDebts();
+            String summary = "";
+            for (Person person : W.getDebtors().keySet()) {
+                if (W.getDebtors().get(person) > 0) {
+                    summary += W.getName() + " owes " + person.getName() + " " + W.getDebtors().get(person) + "PLN\n";
+                }
+            }
+            for (Person person : S.getDebtors().keySet()) {
+                if (S.getDebtors().get(person) > 0) {
+                    summary += S.getName() + " owes " + person.getName() + " " + S.getDebtors().get(person) + "PLN\n";
+                }
+            }
+            for (Person person : M.getDebtors().keySet()) {
+                if (M.getDebtors().get(person) > 0) {
+                    summary += M.getName() + " owes " + person.getName() + " " + M.getDebtors().get(person) + "PLN\n";
+                }
+            }
+
+            productDetails.setText(summary);
         });
 
     }

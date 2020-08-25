@@ -4,27 +4,12 @@ import java.util.ArrayList;
 public class Calculation {
     private Person persons[] = new Person[3];
     private double moneyAmount = 0;
-    private double moneyPerPerson; //MPP
 
     public Calculation(Person p1, Person p2, Person p3) {
         persons[0] = p1;
         persons[1] = p2;
         persons[2] = p3;
         assignDebtors();
-    }
-
-    public void sumExpenses() {
-        for (Person person : persons) {
-            moneyAmount += person.getMoneySpent();
-        }
-    }
-
-    public void calculateMPP() {
-        moneyPerPerson = moneyAmount / persons.length;
-    }
-
-    public double getMPP() {
-        return moneyPerPerson;
     }
 
     public void assignDebtors() {

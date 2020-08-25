@@ -63,6 +63,10 @@ public class Person {
         debtors.put(person, 0.0);
     }
 
+    public Map<Person, Double> getDebtors() {
+        return debtors;
+    }
+
     public void removeProduct(Product product) {
         products.remove(product);
     }

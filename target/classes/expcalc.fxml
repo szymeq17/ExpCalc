@@ -73,7 +73,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextArea fx:id="productDetails" editable="false" layoutX="499.0" layoutY="282.0" prefHeight="287.0" prefWidth="281.0" AnchorPane.leftAnchor="499.0" AnchorPane.rightAnchor="20.0" />
+      <TextArea fx:id="productDetails" editable="false" layoutX="499.0" layoutY="282.0" prefHeight="238.0" prefWidth="281.0" AnchorPane.leftAnchor="499.0" AnchorPane.rightAnchor="20.0" />
       <Label layoutX="20.0" layoutY="30.0" text="Expenses Calculator" AnchorPane.leftAnchor="20.0">
          <font>
             <Font name="Impact" size="45.0" />
@@ -86,11 +86,11 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="499.0" layoutY="246.0" text="Details">
+      <Button fx:id="removeButton" layoutX="408.0" layoutY="243.0" mnemonicParsing="false" text="Remove" />
+      <Button fx:id="calculateButton" layoutX="499.0" layoutY="535.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="281.0" text="Calculate" AnchorPane.leftAnchor="499.0" AnchorPane.rightAnchor="20.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
-      </Label>
-      <Button fx:id="removeButton" layoutX="418.0" layoutY="246.0" mnemonicParsing="false" text="Remove" />
+      </Button>
    </children>
 </AnchorPane>
