@@ -62,13 +62,14 @@ public class MainPaneController {
         Person S = new Person("Szymon", "S");
         Person W = new Person("Wiktoria", "W");
         Person M = new Person("Marcel", "M");
+        Calculation calc = new Calculation(W, S, M);
 
         choosePersonBox.getItems().addAll(W, S, M);
 
         addButton.setOnAction(actionEvent -> {
             String consumers = "";
             if(wCheckbox.isSelected()) {
-                consumers = consumers + "W" + "";
+                consumers = consumers + "W";
             }
             if(sCheckbox.isSelected()) {
                 consumers = consumers + "S";
@@ -79,6 +80,7 @@ public class MainPaneController {
             Product product = new Product(nameField.getText(), datePicker.getValue(),
                     Float.parseFloat(priceField.getText().replace(',', '.')),
                     choosePersonBox.getValue().getName(), consumers);
+            choosePersonBox.getValue().addProduct(product);
             nameField.setText("");
             priceField.setText("");
 
@@ -102,27 +104,31 @@ public class MainPaneController {
         });
 
         calculateButton.setOnAction(actionEvent -> {
-            Calculation calc = new Calculation(W, S, M);
-            calc.assignDebtors();
             calc.optimizeDebts();
+
             String summary = "";
             for (Person person : W.getDebtors().keySet()) {
                 if (W.getDebtors().get(person) > 0) {
-                    summary += W.getName() + " owes " + person.getName() + " " + W.getDebtors().get(person) + "PLN\n";
+                    summary += person.getName() + " owes " + W.getName() + " " + W.getDebtors().get(person) + "PLN\n";
                 }
             }
             for (Person person : S.getDebtors().keySet()) {
                 if (S.getDebtors().get(person) > 0) {
-                    summary += S.getName() + " owes " + person.getName() + " " + S.getDebtors().get(person) + "PLN\n";
+                    summary += person.getName() + " owes " + S.getName() + " " + S.getDebtors().get(person) + "PLN\n";
                 }
             }
             for (Person person : M.getDebtors().keySet()) {
                 if (M.getDebtors().get(person) > 0) {
-                    summary += M.getName() + " owes " + person.getName() + " " + M.getDebtors().get(person) + "PLN\n";
+                    summary += person.getName() + " owes " + M.getName() + " " + M.getDebtors().get(person) + "PLN\n";
                 }
             }
 
+
             productDetails.setText(summary);
+            System.out.println(M.getDebtors());
+            System.out.println(W.getDebtors());
+            System.out.println(S.getDebtors());
+            System.out.println("aaa");
         });
 
     }

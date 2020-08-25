@@ -50,11 +50,11 @@ public class Person {
     public void addProduct(Product product) {
         products.add(product);
         moneySpent += product.getPrice();
-        for(int i=0; i<product.getConsumer().length(); i++) {
-            for (Person person : debtors.keySet()) {
-                if (person.getInitial().charAt(0) == product.getConsumer().charAt(i)) {
-                    debtors.put(person, debtors.get(person) + product.getPrice()/product.getConsumer().length());
-                }
+        System.out.println(debtors);
+        for (Person person : debtors.keySet()) {
+            if (product.getConsumer().contains(person.getInitial()) && !this.equals(person)) {
+                debtors.put(person, debtors.get(person) + product.getPrice()/product.getConsumer().length());
+                System.out.println(debtors);
             }
         }
     }
