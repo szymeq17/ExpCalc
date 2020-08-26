@@ -60,6 +60,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return this.name;
+        return this.name + "    " + "-" + "   " + Math.round(this.price) + "PLN";
     }
 }
