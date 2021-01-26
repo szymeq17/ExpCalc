@@ -14,14 +14,17 @@ After entering products I can click "Calculate" button and application tells me 
 
 
 **Entering the product**
+
 ![](https://i.imgur.com/nj8SwqW.jpg)
 
 
 **Showing details of the entered product**
+
 ![](https://i.imgur.com/cV9YoRz.jpg)
 
 
 **Calculating**
+
 ![](https://i.imgur.com/qDLH2D7.jpg)
 
 ## Technology
